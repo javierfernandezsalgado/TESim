@@ -40,11 +40,11 @@
    )
   )
 
-(defun s5-simulator-stop ()
+(defun simulator-stop ()
   (insert "--> Apply STOP <---")
   )
 
-(defun s5-simulator-apply ()
+(defun simulator-apply ()
   (insert "--> Apply Configuration <--")
   )
 
@@ -68,7 +68,7 @@
 
 
 (defun start-command ()
-  (insert (concat "FEE ON and REGISTER FPGA's Configure
+  (insert (concat "Start Command
 " (int-to-string tick)))
   (setq mode "start")
   )
@@ -115,7 +115,7 @@
 
 
 
-(defun s5-sim-measurements-trigger ()
+(defun sim-measurements-trigger ()
   (let
       (
        (trigger-elements (cl-remove-if-not
@@ -154,7 +154,7 @@
     )
   )
 
-(defun s5-meas-simulator ()
+(defun TESim ()
   (interactive "")
   (let
       (
@@ -172,7 +172,7 @@
     (switch-to-buffer "*SIM-RESULTS*")
     (while (< tick simulation-max)
       (progn
-        (s5-sim-measurements-trigger)
+        (sim-measurements-trigger)
         (execute-command command-list)
         (when (and fss? synch-enabled?)
           (synch-frame-synch)
